@@ -1,1 +1,2 @@
-frente(100,100)
+frente(100)
+esperar(500)

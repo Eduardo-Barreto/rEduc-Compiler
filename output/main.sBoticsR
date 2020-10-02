@@ -1,12 +1,6 @@
 inicio
 
-##region dasada
-	frente(100,100)
-##endregion
-
-##region VMRT
-	levantar(100)
-##endregion
+seguirLinha()
 
 
 fim

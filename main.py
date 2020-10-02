@@ -1,5 +1,7 @@
 import os
 
+os.system('code --install-extension maptz.regionfolder')
+
 files = os.listdir('./src')
 
 if 'output' not in os.listdir('./'):
@@ -17,7 +19,6 @@ for file in files:
             if '#' in linha:
                 pass
             else:
-                print(linha, end='')
                 out.write('\t' + linha)
         a.close()
         out.write('\n##endregion\n\n')
