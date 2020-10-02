@@ -1,5 +1,5 @@
 # R-EducCompiler
-Um compilador de R-Educ para quem quer usar uma estrutura multifile (uma cópia do [sbotics compiler](https://github.com/GRFreire/sboticscompiler), porém pra R-Educ.
+Um compilador de R-Educ para quem quer usar uma estrutura multifile (uma cópia do [sbotics compiler](https://github.com/GRFreire/sboticscompiler), porém pra R-Educ).
 # Requerimentos
 Para usar, você tem que ter o python instalado, pra isso basta fazer o download [aqui](python.org/download) e seguir as instruções na tela de instalação
 # Uso
