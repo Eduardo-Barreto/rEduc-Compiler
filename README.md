@@ -11,7 +11,7 @@ Você precisa ter uma estrutura de arquivos como essa abaixo, onde main.py é o 
  └ arquivo3.sBoticsR
 main.py
 ```
-Pra rodar, é só escrever `python main.py` no terminal/console e pronto
+Pra compilar pela primeira vez é só escrever `python main.py` no terminal/console, a partir daí, basta escrever `compilar` e pronto, ele faz as alterações no mesmo arquivo
 O programa junta todos os arquivos em um só, o resultado final é algo como isso:
 ```
 📂src
@@ -27,4 +27,4 @@ e é esse `main.sBoticsR` que você importa no simulador :)
 Aqui embaixo tem uma demonstração:
 ![Como usar](./ComoUsar.gif)
 
-OBS: Os comandos `inicio` e `fim` devem ser colocados manualmente (por enquanto), seja no arquivo da `src` ou no `output`
+OBS: O comando `inicio` deve ser colocado manualmente (por enquanto), seja no arquivo da `src` ou no `output`
