@@ -27,5 +27,5 @@ for file in files:
         print('-'*20, 'Arquivo inválido','-'*20, end='')
     print('\n','-'*20, 'fim do arquivo','-'*20)
 
-out.write('\nfim\n')
+out.write('fim\n')
 out.close()
