@@ -22,6 +22,7 @@ O programa junta todos os arquivos em um só, o resultado final é algo como iss
 main.py
 ```
 e é esse `main.sBoticsR` que você importa no simulador :)
+```
 
 Aqui embaixo tem uma demonstração:
 ![Como usar](./ComoUsar.gif)
