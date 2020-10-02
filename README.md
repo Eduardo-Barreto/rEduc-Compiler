@@ -26,3 +26,5 @@ e é esse `main.sBoticsR` que você importa no simulador :)
 
 Aqui embaixo tem uma demonstração:
 ![Como usar](./ComoUsar.gif)
+
+OBS: Os comandos `inicio` e `fim` devem ser colocados manualmente (por enquanto), seja no arquivo da `src` ou no `output`
