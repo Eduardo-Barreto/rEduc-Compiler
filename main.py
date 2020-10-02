@@ -16,14 +16,14 @@ while True:
 
     for arquivo in diretorio:
         if 'sBoticsR' in arquivo:
-            arquivoSbotics = open('./src/' + arquivo, 'r')
+            arquivoAtual = open('./src/' + arquivo, 'r')
             out.write('#region ' + arquivo[:arquivo.find('.sBoticsR')] + '\n')
-            for linha in arquivoSbotics:
+            for linha in arquivoAtual:
                 if '#' in linha:
                     pass
                 else:
                     out.write('\t' + linha)
-            arquivoSbotics.close()
+            arquivoAtual.close()
             out.write('\n#endregion\n\n')
             
         else:
