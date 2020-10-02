@@ -2,28 +2,36 @@ import os
 
 os.system('code --install-extension maptz.regionfolder')
 
-files = os.listdir('./src')
 
-if 'output' not in os.listdir('./'):
-    os.mkdir('./output')
+while True:
 
-out = open('./output/VMRT.sBoticsR', 'w')
+    diretorio = os.listdir('./src')
 
-for file in files:
-    if 'sBoticsR' in file:
-        a = open('./src/' + file, 'r')
-        out.write('#region ' + file.strip('.sBoticsR') + '\n')
-        for linha in a:
-            if '#' in linha:
-                pass
-            else:
-                out.write('\t' + linha)
-        a.close()
-        out.write('\n#endregion\n\n')
-        
-    else:
-        print('-'*20, 'Arquivo inválido','-'*20, end='')
-    print('\n','-'*20, 'fim do arquivo','-'*20)
+    if 'output' not in os.listdir('./'):
+        os.mkdir('./output')
 
-out.write('fim\n')
-out.close()
+    out = open('./output/main.sBoticsR', 'w')
+    
+    os.system('cls')
+
+    for arquivo in diretorio:
+        if 'sBoticsR' in arquivo:
+            arquivoSbotics = open('./src/' + arquivo, 'r')
+            out.write('#region ' + arquivo[:arquivo.find('.sBoticsR')] + '\n')
+            for linha in arquivoSbotics:
+                if '#' in linha:
+                    pass
+                else:
+                    out.write('\t' + linha)
+            arquivoSbotics.close()
+            out.write('\n#endregion\n\n')
+            
+        else:
+            print('-'*20, 'Arquivo inválido:', arquivo,'-'*20, end='')
+        print('\n','-'*20, 'fim do arquivo:', arquivo[:arquivo.find('.sBoticsR')], '-'*20)
+
+    out.write('fim\n')
+    out.close()
+
+    while input() != 'compilar':
+        pass
