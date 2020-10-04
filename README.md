@@ -12,7 +12,7 @@ Você precisa ter uma estrutura de arquivos como essa abaixo, onde main.py é o 
 main.py
 ```
 Pra compilar pela primeira vez é só escrever `python main.py` no terminal/console, a partir daí, basta escrever `compilar` e pronto, ele faz as alterações no mesmo arquivo
-O programa junta todos os arquivos em um só, o resultado final é algo como isso:
+O programa junta todos os arquivos em um só, por odem alfabética, o resultado final é algo como isso:
 ```
 📂src
  └ arquivo1.sBoticsR
