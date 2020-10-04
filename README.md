@@ -25,6 +25,6 @@ main.py
 e é esse `main.sBoticsR` que você importa no simulador :)
 
 Aqui embaixo tem uma demonstração:
-![Como usar](./ComoUsar.gif)
+![Como usar](./como_usar.gif)
 
 OBS: O comando `inicio` deve ser colocado manualmente (por enquanto), seja no arquivo da `src` ou no `output`
