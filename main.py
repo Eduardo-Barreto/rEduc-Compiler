@@ -11,13 +11,15 @@ while True:
         os.mkdir('./output')
 
     out = open('./output/main.sBoticsR', 'w')
-    
+
     os.system('cls')
 
     for source_file in directory:
         if 'sBoticsR' in source_file:
             current_file = open('./src/' + source_file, 'r')
-            out.write('#region ' + source_file[:source_file.find('.sBoticsR')] + '\n')
+            out.write('#region ' +
+                      source_file[:source_file.find('.sBoticsR')] +
+                      '\n')
             for line in current_file:
                 if '#' in line:
                     pass
@@ -25,10 +27,12 @@ while True:
                     out.write('\t' + line)
             current_file.close()
             out.write('\n#endregion\n\n')
-            
+
         else:
-            print('-'*20, 'Arquivo inválido:', source_file,'-'*20, end='')
-        print('\n','-'*20, 'Arquivo', source_file[:source_file.find('.sBoticsR')], 'compilado com sucesso', '-'*20)
+            print('-'*20, 'Arquivo inválido:', source_file, '-'*20, end='')
+        print('\n', '-'*20, 'Arquivo',
+              source_file[:source_file.find('.sBoticsR')],
+              'compilado com sucesso', '-'*20)
 
     out.write('fim\n')
     out.close()
