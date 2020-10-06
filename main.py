@@ -5,7 +5,7 @@ os.system('code --install-extension maptz.regionfolder')
 
 while True:
 
-    diretorio = os.listdir('./src')
+    directory = os.listdir('./src')
 
     if 'output' not in os.listdir('./'):
         os.mkdir('./output')
@@ -14,21 +14,21 @@ while True:
     
     os.system('cls')
 
-    for arquivo in diretorio:
-        if 'sBoticsR' in arquivo:
-            arquivoAtual = open('./src/' + arquivo, 'r')
-            out.write('#region ' + arquivo[:arquivo.find('.sBoticsR')] + '\n')
-            for linha in arquivoAtual:
-                if '#' in linha:
+    for source_file in directory:
+        if 'sBoticsR' in source_file:
+            current_file = open('./src/' + source_file, 'r')
+            out.write('#region ' + source_file[:source_file.find('.sBoticsR')] + '\n')
+            for line in current_file:
+                if '#' in line:
                     pass
                 else:
-                    out.write('\t' + linha)
-            arquivoAtual.close()
+                    out.write('\t' + line)
+            current_file.close()
             out.write('\n#endregion\n\n')
             
         else:
-            print('-'*20, 'Arquivo inválido:', arquivo,'-'*20, end='')
-        print('\n','-'*20, 'Arquivo', arquivo[:arquivo.find('.sBoticsR')], 'compilado com sucesso', '-'*20)
+            print('-'*20, 'Arquivo inválido:', source_file,'-'*20, end='')
+        print('\n','-'*20, 'Arquivo', source_file[:source_file.find('.sBoticsR')], 'compilado com sucesso', '-'*20)
 
     out.write('fim\n')
     out.close()
