@@ -14,7 +14,7 @@ while True:
     os.system('cls')
 
     for arquivo in diretorio:
-        if 'sboticsC' in arquivo:
+        if 'sboticsc' in arquivo.lower() or 'cs' in arquivo.lower():
             arquivoAtual = open('./src/' + arquivo, 'r')
             out.write('//' + arquivo[:arquivo.find('.sboticsC')] + '\n\n')
             for linha in arquivoAtual:
