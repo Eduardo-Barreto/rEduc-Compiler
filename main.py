@@ -18,7 +18,7 @@ while True:
         if 'sboticsr' in source_file.lower():
             current_file = open('./src/' + source_file, 'r')
             out.write('#region ' +
-                      source_file[:source_file.find('.sBoticsR')] +
+                      source_file[:source_file.lower().find('.sboticsr')] +
                       '\n')
             for line in current_file:
                 if '#' in line:
@@ -31,7 +31,7 @@ while True:
         else:
             print('-'*20, 'Arquivo inválido:', source_file, '-'*20, end='')
         print('\n', '-'*20, 'Arquivo',
-              source_file[:source_file.find('.sBoticsR')],
+              source_file[:source_file.lower().find('.sboticsr')],
               'compilado com sucesso', '-'*20)
 
     out.write('fim\n')
