@@ -2,6 +2,8 @@ import os
 
 os.system('code --install-extension maptz.regionfolder')
 
+file_name = input('Digite o nome do arquivo final (sem a extensão): ')
+
 
 while True:
 
@@ -10,15 +12,15 @@ while True:
     if 'output' not in os.listdir('./'):
         os.mkdir('./output')
 
-    out = open('./output/main.sBoticsR', 'w')
+    out = open('./output/'+file_name+'.sBoticsR', 'w')
 
     os.system('cls')
 
     for source_file in directory:
-        if 'sboticsr' in source_file.lower():
+        if 'sBoticsR' in source_file:
             current_file = open('./src/' + source_file, 'r')
             out.write('#region ' +
-                      source_file[:source_file.lower().find('.sboticsr')] +
+                      source_file[:source_file.find('.sBoticsR')] +
                       '\n')
             for line in current_file:
                 out.write('\t' + line)
@@ -28,7 +30,7 @@ while True:
         else:
             print('-'*20, 'Arquivo inválido:', source_file, '-'*20, end='')
         print('\n', '-'*20, 'Arquivo',
-              source_file[:source_file.lower().find('.sboticsr')],
+              source_file[:source_file.find('.sBoticsR')],
               'compilado com sucesso', '-'*20)
 
     out.write('fim\n')
