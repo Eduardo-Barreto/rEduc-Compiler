@@ -16,7 +16,7 @@ while True:
     for source_file in directory:
         if 'sboticsc' in source_file.lower() or 'cs' in source_file.lower():
             current_file = open('./src/' + source_file, 'r')
-            out.write('//region' + source_file[:source_file.find('.sboticsC')] + '\n\n')
+            out.write('//region' + source_file[:source_file.lower().find('.sboticsc')] + '\n\n')
             for line in current_file:
                 if '// ' in line:
                     pass
@@ -27,9 +27,10 @@ while True:
             
         else:
             print('-'*20, 'Arquivo inválido:', source_file,'-'*20, end='')
-        print('\n','-'*20, 'concluído', '-'*20)
+        print('\n', '-'*20, 'Arquivo', source_file[:source_file.lower().find('.sboticsc')], 'compilado com sucesso', '-'*20)
 
     out.close()
-
+    
+    print('\nDigite compilar para compilar novamente\n')
     while input() != 'compilar':
         pass
