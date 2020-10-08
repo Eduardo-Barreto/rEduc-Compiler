@@ -15,7 +15,7 @@ while True:
     os.system('cls')
 
     for source_file in directory:
-        if 'sBoticsR' in source_file:
+        if 'sboticsr' in source_file.lower():
             current_file = open('./src/' + source_file, 'r')
             out.write('#region ' +
                       source_file[:source_file.find('.sBoticsR')] +
