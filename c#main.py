@@ -16,14 +16,14 @@ while True:
     for source_file in directory:
         if 'sboticsc' in source_file.lower() or 'cs' in source_file.lower():
             current_file = open('./src/' + source_file, 'r')
-            out.write('//regions' + source_file[:source_file.find('.sboticsC')] + '\n\n')
+            out.write('//region' + source_file[:source_file.find('.sboticsC')] + '\n\n')
             for line in current_file:
                 if '// ' in line:
                     pass
                 else:
                     out.write('\t' + line)
             current_file.close()
-            out.write('\n\n//\n\n')
+            out.write('\n\n//region\n\n')
             
         else:
             print('-'*20, 'Arquivo inválido:', source_file,'-'*20, end='')
