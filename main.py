@@ -21,10 +21,7 @@ while True:
                       source_file[:source_file.lower().find('.sboticsr')] +
                       '\n')
             for line in current_file:
-                if '#' in line:
-                    pass
-                else:
-                    out.write('\t' + line)
+                out.write('\t' + line)
             current_file.close()
             out.write('\n#endregion\n\n')
 
