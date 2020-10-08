@@ -16,7 +16,7 @@ while True:
     for source_file in directory:
         if 'sboticsc' in source_file.lower() or 'cs' in source_file.lower():
             current_file = open('./src/' + source_file, 'r')
-            out.write('//' + source_file[:source_file.find('.sboticsC')] + '\n\n')
+            out.write('//regions' + source_file[:source_file.find('.sboticsC')] + '\n\n')
             for line in current_file:
                 if '// ' in line:
                     pass
