@@ -4,7 +4,7 @@ os.system('code --install-extension maptz.regionfolder')
 
 while True:
 
-    diretorio = os.listdir('./src')
+    directory = os.listdir('./src')
 
     if 'output' not in os.listdir('./'):
         os.mkdir('./output')
@@ -13,20 +13,20 @@ while True:
     
     os.system('cls')
 
-    for arquivo in diretorio:
-        if 'sboticsc' in arquivo.lower() or 'cs' in arquivo.lower():
-            arquivoAtual = open('./src/' + arquivo, 'r')
-            out.write('//' + arquivo[:arquivo.find('.sboticsC')] + '\n\n')
-            for linha in arquivoAtual:
-                if '// ' in linha:
+    for source_file in directory:
+        if 'sboticsc' in source_file.lower() or 'cs' in source_file.lower():
+            current_file = open('./src/' + source_file, 'r')
+            out.write('//' + source_file[:source_file.find('.sboticsC')] + '\n\n')
+            for line in current_file:
+                if '// ' in line:
                     pass
                 else:
-                    out.write('\t' + linha)
-            arquivoAtual.close()
+                    out.write('\t' + line)
+            current_file.close()
             out.write('\n\n//\n\n')
             
         else:
-            print('-'*20, 'Arquivo inválido:', arquivo,'-'*20, end='')
+            print('-'*20, 'Arquivo inválido:', source_file,'-'*20, end='')
         print('\n','-'*20, 'concluído', '-'*20)
 
     out.close()
