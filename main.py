@@ -22,6 +22,7 @@ while True:
             for line in current_file:
                 out.write('\t' + line)
             current_file.close()
+            out.write('\n\n')
 
         else:
             print('-'*20, 'Arquivo inválido:', source_file, '-'*20, end='')
