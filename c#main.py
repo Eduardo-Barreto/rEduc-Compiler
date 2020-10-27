@@ -11,7 +11,7 @@ while True:
     if 'out' not in os.listdir('./'):
         os.mkdir('./out')
 
-    out = open('./out/'+file_name+'.sboticsC', 'w')
+    out = open('./out/'+file_name+'.sBoticsC', 'w')
 
     os.system('cls')
 
