@@ -20,7 +20,7 @@ arquivo1.sboticsr
 arquivo2.sboticsr
 ```
 
-### src
+### Pasta `src`
 **`arquivo1.sBoticsR`**
 Nesse arquivo você coloca uma parte da sua programação
 ```
