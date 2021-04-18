@@ -1,6 +1,10 @@
 import os
 
 
+# Variables
+has_imported = []
+
+
 # Utils ----------------------------------------------------------
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -45,7 +49,10 @@ class MainFileManager():
 
 class ImporterManager():
     def include(self, out_name, import_name):
-        print("importing:", import_name)
+        if import_name in has_imported:
+            return
+        print('importing:', import_name)
+        has_imported.append(import_name)
         out_file = open(out_name, 'w', encoding='utf-8')
         try:
             file_to_import = open(import_name, 'r', encoding='utf-8')
@@ -120,4 +127,4 @@ while True:
     if input().lower() == 'c':
         exit()
 
-# TODO: verificação de loop de importação
+# TODO: import por local do arquivo
