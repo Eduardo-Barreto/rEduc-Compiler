@@ -11,7 +11,16 @@ out = None
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 # Classes ----------------------------------------------------------------
-
+class colors:
+    HEADER = '\033[95m'
+    OKBLUE = '\033[94m'
+    OKCYAN = '\033[96m'
+    OKGREEN = '\033[92m'
+    WARNING = '\033[93m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+    UNDERLINE = '\033[4m'
 
 class MainFileManager():
     def __init__(self):
@@ -51,7 +60,7 @@ class MainFileManager():
 
 class ImporterManager():
     def include(self, out_name, import_name):
-        print('importing:', import_name)
+        print(f'{colors.OKBLUE}importing: {import_name}{colors.ENDC}')
         out_file = open(out_name, 'w', encoding='utf-8')
         try:
             file_to_import = open(import_name, 'r', encoding='utf-8')
@@ -121,7 +130,7 @@ def Process():
 		else:
 			out.write(line)
 
-	print("Compiled at:", data.time())
+	print(f'{colors.OKGREEN}Compiled at: {data.time()}{colors.ENDC}')
 	out.close()
 	source_main.close()
 class Handler(FileSystemEventHandler):
