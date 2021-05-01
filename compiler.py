@@ -92,7 +92,7 @@ class ImporterManager():
                 self.include(out_name, file_imported)
             else:
                 out.write(line)
-        out.write(f'\n{MainFile.comment} end file "{import_name}"\n')
+        out.write(f'\n{MainFile.comment} endfile "{import_name}"\n')
         file_to_import.close()
 
 
