@@ -8,9 +8,13 @@ from watchdog.events import FileSystemEventHandler
 out = None
 
 # Utils ----------------------------------------------------------
+
+
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 # Classes ----------------------------------------------------------------
+
+
 class colors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -21,6 +25,7 @@ class colors:
     ENDC = '\033[0m'
     BOLD = '\033[1m'
     UNDERLINE = '\033[4m'
+
 
 class MainFileManager():
     def __init__(self):
@@ -68,11 +73,18 @@ class ImporterManager():
             print(f'File {import_name} not found')
             return
 
+        out.write(f'{MainFile.comment} file "{import_name}"\n')
+
         for line in file_to_import.readlines():
-            if line.startswith(MainFile.command):
+            line = line.replace('\t', '')
+            if f'{MainFile.command}("' in line:
                 file_imported = line.replace(MainFile.command, '')
                 file_imported = file_imported.strip()[
                     2:file_imported.find('")')]
+                file_imported = file_imported.replace(
+                    f'{MainFile.extension}', '')
+                file_imported = file_imported.strip('")')
+                file_imported = file_imported.strip('.')
                 file_imported = (
                     f'./src/{file_imported}.' +
                     f'{MainFile.extension}'
@@ -80,11 +92,7 @@ class ImporterManager():
                 self.include(out_name, file_imported)
             else:
                 out.write(line)
-
-        out_file.write(f'{MainFile.comment} file "{import_name}"\n')
-        out_file.write(str(file_to_import.read()))
-        out_file.write(f'\n{MainFile.comment} end file\n\n\n')
-        out_file.close()
+        out.write(f'\n{MainFile.comment} end file "{import_name}"\n')
         file_to_import.close()
 
 
@@ -105,67 +113,74 @@ clear()
 
 print("Waiting modifications...")
 
+
 def Process():
-	global out
-	clear()
-	data = datetime.datetime.now().replace(microsecond=0)
+    global out
+    clear()
+    data = datetime.datetime.now().replace(microsecond=0)
 
-	source_main = open(
-		f'./src/main.{MainFile.extension}',
-		'r',
-		encoding='utf-8'
-	)
-	out = open(f'./out/{MainFile.name}', 'w', encoding='utf-8')
-	for line in source_main.readlines():
-		if line.startswith(MainFile.command):
-			file_to_import = line.replace(MainFile.command, '')
-			file_to_import = file_to_import.strip()[
-				2:file_to_import.find('")')]
-			file_to_import = (
-				f'./src/{file_to_import}.' +
-				f'{MainFile.extension}'
-			)
-			Importer.include(
-				f'./out/{MainFile.name}', file_to_import)
-		else:
-			out.write(line)
+    source_main = open(
+        f'./src/main.{MainFile.extension}',
+        'r',
+        encoding='utf-8'
+    )
+    out = open(f'./out/{MainFile.name}', 'w', encoding='utf-8')
+    for line in source_main.readlines():
+        if f'{MainFile.command}("' in line:
+            file_to_import = line.replace(MainFile.command, '')
+            file_to_import = file_to_import.strip()[
+                2:file_to_import.find('")')]
+            file_to_import = file_to_import.replace(
+                f'{MainFile.extension}', '')
+            file_to_import = file_to_import.strip('")')
+            file_to_import = file_to_import.strip('.')
+            file_to_import = (
+                f'./src/{file_to_import}.' +
+                f'{MainFile.extension}'
+            )
+            Importer.include(
+                f'./out/{MainFile.name}', file_to_import)
+        else:
+            out.write(line)
 
-	print(f'{colors.OKGREEN}Compiled at: {data.time()}{colors.ENDC}')
-	out.close()
-	source_main.close()
+    print(f'{colors.OKGREEN}Compiled at: {data.time()}{colors.ENDC}')
+    out.close()
+    source_main.close()
+
+
 class Handler(FileSystemEventHandler):
 
-	@staticmethod
-	def on_any_event(event):
-		if event.is_directory:
-			return None
+    @staticmethod
+    def on_any_event(event):
+        if event.is_directory:
+            return None
 
-		elif event.event_type == 'modified':
-			Process()
-			time.sleep(1)
+        elif event.event_type == 'modified':
+            Process()
+            time.sleep(1)
+
 
 class Watcher:
-	DIRECTORY_TO_WATCH = "./src"
+    DIRECTORY_TO_WATCH = "./src"
 
-	def __init__(self):
-		self.observer = Observer()
+    def __init__(self):
+        self.observer = Observer()
 
-	def run(self):
-		event_handler = Handler()
-		self.observer.schedule(event_handler, self.DIRECTORY_TO_WATCH, recursive=True)
-		self.observer.start()
-		try:
-			while True:
-				time.sleep(5)
-		except:
-			self.observer.stop()
-			print("Error")
+    def run(self):
+        event_handler = Handler()
+        self.observer.schedule(
+            event_handler, self.DIRECTORY_TO_WATCH, recursive=True)
+        self.observer.start()
+        try:
+            while True:
+                time.sleep(5)
+        except:
+            self.observer.stop()
+            print("Error")
 
-		self.observer.join()
+        self.observer.join()
 
 
 if __name__ == '__main__':
-	w = Watcher()
-	w.run()
-
-# TODO: import por local do arquivo
+    w = Watcher()
+    w.run()
