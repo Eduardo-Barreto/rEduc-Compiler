@@ -9,10 +9,17 @@
 
 
 <p align="center">
+ <a href="#demonstração">Demonstração</a> • 
  <a href="#requerimentos">Requerimentos</a> • 
  <a href="#uso">Uso</a> • 
  <a href="#contribuição">Contribuição</a>
 </p>
+
+
+# Demonstração
+Essa demonstração é baseada no primeiro dos [exemplos](./examples.md)
+
+![demo](https://github.com/Eduardo-Barreto/rEduc-Compiler/blob/main/assets/demo.gif?raw=true)
 
 
 # Requerimentos
