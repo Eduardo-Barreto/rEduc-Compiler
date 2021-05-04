@@ -64,31 +64,27 @@ class MainFileManager():
 
 
 class ImporterManager():
-	def include(self, out_name, import_name):
-		print(f'{colors.OKBLUE}importing: {import_name}{colors.ENDC}')
-		out_file = open(out_name, 'w', encoding='utf-8')
+	def include(self, import_name):
+		FinalInclude = ""
+		print(f'{colors.WARNING}importing: {import_name.replace("./src/", "")}{colors.ENDC}')
 		try:
 			file_to_import = open(import_name, 'r', encoding='utf-8')
 		except FileNotFoundError:
 			print(f'File {import_name} not found')
 			return
-
-		out.write(f'{MainFile.comment} file "{import_name}"\n')
-
 		for line in file_to_import.readlines():
 			if line.find(MainFile.command) > -1:
 				file_imported = line.replace(MainFile.command, '')
-				file_imported = file_imported.replace(f'.{MainFile.extension}', '')
 				file_imported = file_imported[file_imported.find('("')+2:file_imported.find('")')]
 				file_imported = (
 					f'./src/{file_imported}.' +
 					f'{MainFile.extension}'
 				)
-				self.include(out_name, file_imported)
+				FinalInclude += self.include(file_imported)
 			else:
-				out.write(line)
-		out.write(f'\n{MainFile.comment} endfile "{import_name}"\n')
+				FinalInclude += line
 		file_to_import.close()
+		return FinalInclude
 
 
 # Instances ----------------------------------------------------------------
@@ -115,7 +111,7 @@ def Process():
 	data = datetime.datetime.now().replace(microsecond=0)
 
 	out = open(f'./out/{MainFile.name}', 'w', encoding='utf-8')
-	Importer.include(f'./out/{MainFile.name}', f'./src/main.{MainFile.extension}')
+	out.write(Importer.include(f'./src/main.{MainFile.extension}'))
 
 	print(f'{colors.OKGREEN}Compiled at: {data.time()}{colors.ENDC}')
 	out.close()
