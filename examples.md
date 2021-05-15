@@ -46,7 +46,7 @@ inicio
 # endfile "./src/outro_arquivo.re"
 fim
 ```
-
+---
 # Exemplo 2
 Um exemplo levemente mais complexo, abordando novas pastas dentro da `/src`.
 ## Estrutura inicial do seu código e arquivos
