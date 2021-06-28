@@ -37,6 +37,9 @@ class MainFileManager():
 
 	def checkExtension(self, name):
 		self.name = name
+		if(self.name == ""):
+			self.name = "main.cs"
+
 		try:
 			self.extension = str(self.name.split('.')[1]).lower()
 		except IndexError:
