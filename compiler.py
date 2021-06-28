@@ -37,6 +37,9 @@ class MainFileManager():
 
 	def checkExtension(self, name):
 		self.name = name
+		if(self.name == ""):
+			self.name = "main.cs"
+
 		try:
 			self.extension = str(self.name.split('.')[1]).lower()
 		except IndexError:
@@ -91,8 +94,9 @@ class ImporterManager():
 MainFile = MainFileManager()
 MainFile.checkExtension(
 	input(
-		'Enter the name of the final file' +
-		'(with the extension, such as "main.cs"): '
+		'Enter the name of the final file ' +
+		'(with the extension, such as "main.cs"), \n' +
+		'if no filename is entered, "main.cs" will be used: '
 	)
 )
 MainFile.diretory()
