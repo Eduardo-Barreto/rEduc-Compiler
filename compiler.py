@@ -94,8 +94,9 @@ class ImporterManager():
 MainFile = MainFileManager()
 MainFile.checkExtension(
 	input(
-		'Enter the name of the final file' +
-		'(with the extension, such as "main.cs"): '
+		'Enter the name of the final file ' +
+		'(with the extension, such as "main.cs"), \n' +
+		'if no filename is entered, "main.cs" will be used: '
 	)
 )
 MainFile.diretory()
