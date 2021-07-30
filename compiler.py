@@ -86,6 +86,8 @@ class ImporterManager():
 						f'{MainFile.extension}'
 					)
 					FinalInclude += self.include(file_imported)
+				else:
+					FinalInclude += line
 			else:
 				FinalInclude += line
 		file_to_import.close()
