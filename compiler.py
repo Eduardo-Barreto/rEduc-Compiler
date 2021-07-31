@@ -77,13 +77,17 @@ class ImporterManager():
 			return
 		for line in file_to_import.readlines():
 			if line.find(MainFile.command) > -1:
-				file_imported = line.replace(MainFile.command, '')
-				file_imported = file_imported[file_imported.find('("')+2:file_imported.find('")')]
-				file_imported = (
-					f'./src/{file_imported}.' +
-					f'{MainFile.extension}'
-				)
-				FinalInclude += self.include(file_imported)
+				splittedLine = line.split("(")
+				if MainFile.command in splittedLine[0].split(" "):
+					file_imported = line.replace(MainFile.command, '')
+					file_imported = file_imported[file_imported.find('("')+2:file_imported.find('")')]
+					file_imported = (
+						f'./src/{file_imported}.' +
+						f'{MainFile.extension}'
+					)
+					FinalInclude += self.include(file_imported)
+				else:
+					FinalInclude += line
 			else:
 				FinalInclude += line
 		file_to_import.close()
